@@ -1,0 +1,32 @@
+#include<cstdlib>
+#include<iostream>
+#include<ctime>
+using namespace std;
+int main()
+{
+    cout<<"GUESS THE NUMBER"<<endl;
+    cout<<"________________________________________________________"<<endl;
+    int N=100;
+    int n,num=1;
+    srand(time(0));
+    for (int i=0;i<1;i++)
+    {
+        n=rand()% N;
+        
+    }
+    
+    do{
+        cout<<"Guess a number between 1 to 100"<<endl;
+    cin>>num;
+    
+    if(num>n)
+    {
+        cout<<"The number is less than this"<<endl;
+    }
+    else if (num<n)
+    {
+        cout<<"The number is greater than this"<<endl;;
+    }
+    }while(num!=n);
+    cout<<"Congratulations you found the number!!!!!!"<<endl;
+}

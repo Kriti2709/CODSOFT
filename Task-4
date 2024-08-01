@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+struct Task {
+    string descp;
+    bool finished;
+
+    Task(const string& desc) : descp(desc), finished(false) {}
+};
+
+class TodoList {
+private:
+    vector<Task> tasks;
+
+public:
+    // Function to add a new task to the list
+    void addTask(const string& descp) {
+        tasks.emplace_back(descp);
+        cout << "Task added: " << descp << endl;
+    }
+
+    // Function to view all tasks in the list
+    void viewTasks() {
+        if (tasks.empty()) {
+            cout << "No tasks to display." << endl;
+        } else {
+            cout << "TO-DO LIST" << endl;
+            for (size_t i = 0; i < tasks.size(); ++i) {
+                cout << i + 1 << ". ";
+                if (tasks[i].finished) {
+                    cout << "[Completed] ";
+                } else {
+                    cout << "[Pending]   ";
+                }
+                cout << tasks[i].descp << endl;
+            }
+        }
+    }
+
+    // Function to mark a task as completed
+    void completeTask(size_t index) {
+        if (index >= 1 && index <= tasks.size()) {
+            tasks[index - 1].finished = true;
+            cout << "Task marked as completed." << endl;
+        } else {
+            cout << "Invalid task number." << endl;
+        }
+    }
+
+    // Function to remove a task from the list
+    void removeTask(size_t index) {
+        if (index >= 1 && index <= tasks.size()) {
+            tasks.erase(tasks.begin() + index - 1);
+            cout << "Task removed." << endl;
+        } else {
+            cout << "Invalid task number." << endl;
+        }
+    }
+};
+
+int main() {
+    TodoList todoList;
+    int choice;
+    string taskDescp;
+    size_t taskIndex;
+
+    do {
+        // Menu
+        cout << "\n===== TO-DO LIST MANAGER =====" << endl;
+        cout << "1. Add Task" << endl;
+        cout << "2. View Tasks" << endl;
+        cout << "3. Mark Task as Completed" << endl;
+        cout << "4. Remove Task" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter task description: ";
+                cin.ignore(); // Ignore newline character left in buffer
+                getline(cin, taskDescp);
+                todoList.addTask(taskDescp);
+                break;
+            case 2:
+                todoList.viewTasks();
+                break;
+            case 3:
+                cout << "Enter task number to mark as completed: ";
+                cin >> taskIndex;
+                todoList.completeTask(taskIndex);
+                break;
+            case 4:
+                cout << "Enter task number to remove: ";
+                cin >> taskIndex;
+                todoList.removeTask(taskIndex);
+                break;
+            case 5:
+                cout << "Exiting program." << std::endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << std::endl;
+                break;
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}

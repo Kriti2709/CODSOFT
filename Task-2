@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+void addition(int num1,int num2)
+{
+    int sum=0;
+    sum=num1+num2;
+    cout<<"The sum of the 2 given numbers is :"<<sum;
+}
+void subtraction(int num1,int num2)
+{
+    int diff=0;
+    diff=num1-num2;
+    cout<<"The difference of the 2 numbers is:"<<diff;
+}
+void multiplication(int num1,int num2)
+{
+    int mul=0;
+    mul=num1*num2;
+    cout<<"The multiplication of the 2 numbers is :"<<mul;
+}
+void division(int num1,int num2)
+{
+    int divd=0;
+    divd=num1/num2;
+    cout<<"the division of the 2 numbers is :"<<divd;
+}
+int main()
+{
+    cout<<"SIMPLE CALCULATOR";
+    cout<<"\n_________________________________________________";
+    int num1,num2,choice;
+    cout<<"\nEnter number1:"<<endl;
+    cin>>num1;
+    cout<<"Enter number2:"<<endl;
+    cin>>num2;
+    cout<<"Choice the opration you want to perform";
+    cout<<"\n1.Addition"<<endl;;
+    cout<<"2.Subtraction"<<endl;
+    cout<<"3.Multiplication"<<endl;
+    cout<<"4.Division"<<endl;
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+        addition(num1,num2);
+        break;
+        case 2:
+        subtraction(num1,num2);
+        break;
+        case 3:
+        multiplication(num1,num2);
+        break;
+        case 4:
+        division(num1,num2);
+        break;
+    }
+}
